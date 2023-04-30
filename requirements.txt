@@ -1,3 +1,4 @@
 CurrencyConverter
 fastapi
 uvicorn
+fire
