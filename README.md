@@ -40,7 +40,7 @@ async function getSupportedCurrencies() {
 
 ### `http://localhost:8000/convert/{from}/{amount}/{to}`
 
-GET request that converts a supported currency name of a given amount to a different supported currency.
+GET request that converts a supported currency name of a given amount to a different supported currency. If this call fails, it will return a status 404 error.
 
 **From command line**
 
