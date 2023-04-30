@@ -1,6 +1,6 @@
 # currency-converter
 
-Supports three endpoints `/convert`, `/convert-all`, and `/supported-currencies`. All detailed below.
+Supports three endpoints `/convert`, `/convert-all`, and `/supported-currencies`. All detailed below. If you want concrete examples, check out `index.html` for use examples of fetching from javascript.
 
 ## Setup
 
@@ -36,7 +36,7 @@ GET request to `/supported-currencies` returns a list of supported currencies.
 
 ```bash
 curl http://localhost:8000/supported-currencies
-# >>> ["CAD","USD","EUR","JPY","CNY","GBP","AUD","CHF"]
+# >>> [{"currency":"CAD","description":"Canadian Dollar"},{"currency":"USD","description":"US Dollar"},{"currency":"EUR","description":"Euro"},{"currency":"JPY","description":"Japanese Yen"},{"currency":"CNY","description":"Chinese Yuan Renminbi"},{"currency":"GBP","description":"British Pound"},{"currency":"AUD","description":"Australian Dollar"},{"currency":"CHF","description":"Swiss Franc"}]
 ```
 
 ## `http://localhost:8000/convert/{from_currency}/{amount}/{to_currency}`

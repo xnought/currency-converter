@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Example</title>
+	</head>
+	<body>
+		<h1>Everything is logged to the console, so open up dev tools</h1>
+		<h1>make sure the converter.py server is running on port 8000</h1>
+
+		<script>
+			const SERVER_URL = "http://localhost:8000";
+			async function getSupportedCurrencies() {
+				const response = await fetch(
+					`${SERVER_URL}/supported-currencies`
+				);
+				const data = await response.json();
+				return data;
+			}
+			async function convertCurrency({
+				fromCurrency,
+				amount,
+				toCurrency,
+			}) {
+				const response = await fetch(
+					`${SERVER_URL}/convert/${fromCurrency}/${amount}/${toCurrency}`
+				);
+				const data = await response.json();
+				return data;
+			}
+			async function convertAllCurrencies({ fromCurrency, amount }) {
+				const response = await fetch(
+					`${SERVER_URL}/convert-all/${fromCurrency}/${amount}`
+				);
+				const data = await response.json();
+				return data;
+			}
+
+			getSupportedCurrencies().then((data) => {
+				console.log("Supported currencies", data);
+			});
+
+			convertCurrency({
+				fromCurrency: "USD",
+				amount: 100,
+				toCurrency: "EUR",
+			}).then((conversion) => {
+				console.log("From 100 USD to EUR", conversion);
+			});
+
+			convertAllCurrencies({
+				fromCurrency: "CAD",
+				amount: 100,
+			}).then((conversions) => {
+				console.log(
+					"From 100 CAD to all other supported currencies",
+					conversions
+				);
+			});
+		</script>
+	</body>
+</html>

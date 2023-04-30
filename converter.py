@@ -1,11 +1,13 @@
 from fastapi import FastAPI
+from fastapi.exceptions import HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from uvicorn import run
 from pydantic import BaseModel
-from fastapi.exceptions import HTTPException
 from currency_converter import CurrencyConverter
 from fire import Fire
 
 app = FastAPI()
+app.add_middleware(CORSMiddleware, allow_origins=["*"])
 c = CurrencyConverter()
 
 
@@ -25,10 +27,31 @@ SUPPORTED_CURRENCIES = [
     "CHF",  # Swiss Franc
 ]
 
+SUPPORTED_CURRENCIES_DESCRIPTION = [
+    "Canadian Dollar",
+    "US Dollar",
+    "Euro",
+    "Japanese Yen",
+    "Chinese Yuan Renminbi",
+    "British Pound",
+    "Australian Dollar",
+    "Swiss Franc",
+]
+
+
+class SupportedResponse(BaseModel):
+    currency: str
+    description: str
+
 
 @app.get("/supported-currencies")
-def supported_currencies():
-    return SUPPORTED_CURRENCIES
+def supported_currencies() -> list[SupportedResponse]:
+    return [
+        SupportedResponse(currency=currency, description=description)
+        for currency, description in zip(
+            SUPPORTED_CURRENCIES, SUPPORTED_CURRENCIES_DESCRIPTION
+        )
+    ]
 
 
 @app.get("/convert/{from_currency:str}/{amount:float}/{to_currency:str}")
