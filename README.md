@@ -39,7 +39,7 @@ curl http://localhost:8000/currencies
 
 ### `/convert`
 
-`GET` request to `/convert/{currency}/{amount}/{other_currency}` converts the `amount` of a `currency` to the an `other_currency`.
+`GET` request to `/convert/{currency}/{amount}/{other_currency}` converts the `amount` of a `currency` to the `other_currency`.
 
 **Example Request to convert 100 USD to CAD**
 
