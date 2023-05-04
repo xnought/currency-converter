@@ -44,7 +44,7 @@ class SupportedResponse(BaseModel):
     description: str
 
 
-@app.get("/supported-currencies")
+@app.get("/currencies")
 def supported_currencies() -> list[SupportedResponse]:
     return [
         SupportedResponse(currency=currency, description=description)

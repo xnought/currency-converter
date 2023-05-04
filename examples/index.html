@@ -13,9 +13,7 @@
 		<script>
 			const SERVER_URL = "http://localhost:8000";
 			async function getSupportedCurrencies() {
-				const response = await fetch(
-					`${SERVER_URL}/supported-currencies`
-				);
+				const response = await fetch(`${SERVER_URL}/currencies`);
 				const data = await response.json();
 				return data;
 			}
