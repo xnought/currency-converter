@@ -102,3 +102,8 @@ python3 converter.py --port 8000
 
 Open [`index.html`](examples/index.html) and the console to see requests in action using the `fetch` API.
 
+## Sequence Diagram
+
+You can call any one of these whenever you want. There is no sequence requred.
+
+<img src="https://user-images.githubusercontent.com/65095341/236586273-cd6d5a77-cc63-4b29-ae4d-4136da100ffe.png" width="50%" >
