@@ -56,6 +56,10 @@ def supported_currencies() -> list[SupportedResponse]:
 
 @app.get("/convert/{from_currency:str}/{amount:float}/{to_currency:str}")
 def convert(from_currency: str, amount: float, to_currency: str) -> ConvertResponse:
+    from_currency = from_currency.upper()
+    to_currency = to_currency.upper()
+    amount = float(amount)
+
     # if currency not supported error out with status 404
     if (
         from_currency not in SUPPORTED_CURRENCIES
