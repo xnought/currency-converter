@@ -8,7 +8,6 @@ Currency Converter supports HTTP `GET` requests:
 -   `/convert`
 -   `/convert-all`
 
-
 <a href="https://www.figma.com/file/I4FUw5ZXxNuHlK3nDIWHpU/Currency-Converter-Architecture?type=whiteboard&node-id=0%3A1&t=9F5v6CcHE8LXZIJY-1">
 <img src="https://user-images.githubusercontent.com/65095341/236584335-e383d383-5109-40fb-be41-cb0ae7442104.png" alt="UML diagram"
 </a>
@@ -95,7 +94,7 @@ pip3 install -r requirements.txt
 Then run the REST Currency Converter server on `http://localhost:8000` with
 
 ```bash
-python3 converter.py --port 8000
+python3 server.py --port 8000
 ```
 
 ## Example in the browser
